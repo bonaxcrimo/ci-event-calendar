@@ -58,6 +58,20 @@
                 var title = view.title;
                 var text = "Test ";
                 $(".fc-center").html("<h2 >"+(title)+"</h2>");
+                $(".fc-right").append(`<select class="select_view fc-state-default fc-corner-right" style='padding:4px'>
+                    <option value="month">Basic Month</option>
+                    <option value="listMonth">List Month</option>
+                    <option value="listWeek">List listWeek</option>
+                    <option value="listDay">List Day</option>
+                    <option value="agendaWeek">Agenda Week</option>
+                    <option value="agendaDay">Agenda Day</option>
+                    <option value="basicDay">Basic Day</option>
+                    <option value="basicWeek">Basic Week</option>
+                    </select>`);
+
+               $(".select_view").on("change", function(event) {
+                   $('#calendar').fullCalendar('changeView',this.value);
+               });
               },
                 // Get all events stored in database
                 eventLimit: true, // allow "more" link when too many events
@@ -82,6 +96,7 @@
                         placement: 'top',
                         container: 'body'
                     })
+
                 }
             });
 
